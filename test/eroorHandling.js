@@ -1,4 +1,5 @@
 //1
+//הפרדה של המספרים במערך והןצאץם למערך חדש בתוספת בדיקה שזה מערך
 function extractNumbers(array) {
     try {
         if (!Array.isArray(array)) {
@@ -6,12 +7,11 @@ function extractNumbers(array) {
         }
         return array.filter(item => typeof (item) === "number" && !Number.isNaN(item))
     } catch (err) {
-        console.log(err.massage);
-        throw err;
-
+        console.log(err.message);
     } finally {
         console.log("Finished attempting to extract numbers");
     }
+    
 }
 
 // console.log(extractNumbers([1, "hi", 5])); 
@@ -19,6 +19,7 @@ function extractNumbers(array) {
 // extractNumbers("bad");
 
 //2
+//סכימת מספרים בלבד על ידי שימוש ב extractNumbers 
 function sumNumbersSafe(arr){
     let sum = 0;
     try{
@@ -35,6 +36,17 @@ function sumNumbersSafe(arr){
     }
     
 }
-// console.log(sumNumbersSafe(0,5))
+// console.log(sumNumbersSafe(["kjn",5,["fs"]]))
 
 //3
+function filterLargeSums(arrList,minTotal){
+    try{
+        return arrList.filter((arr) => sumNumbersSafe(arr) >= minTotal )
+        
+    }
+    catch(err){
+        console.log(err.message)
+    }
+}
+
+console.log(filterLargeSums([[1,2,3],[10,"bad",5],"fail"],10))
